@@ -1,3 +1,10 @@
+<script setup lang="ts">
+import axios from "axios";
+
+definePageMeta({
+  middleware: ["auth"],
+});
+</script>
 <template>
   <h1>Create New Link</h1>
   <GoBack>or go back to links</GoBack>

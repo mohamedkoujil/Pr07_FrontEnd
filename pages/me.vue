@@ -1,5 +1,10 @@
 <script setup lang="ts">
 import axios from "axios";
+import { useRouter } from "vue-router";
+
+definePageMeta({
+  middleware: ["auth"],
+});
 
 const loggedIn = ref(false);
 const loading = ref(true);
@@ -11,8 +16,7 @@ const user = ref({
 
 const getUserData = async () => {
   try {
-    const res = await axios.get("/api/user");
-    console.log(res.data);
+    const res = await axios.get("/user");
     user.value = res.data;
     loggedIn.value = true;
   } catch (error) {
@@ -29,14 +33,11 @@ onMounted(() => {
 </script>
 
 <template>
-  <div v-if="loading">Loading</div>
-  <div v-else>
-    <div v-if="loggedIn">
+  <div>
+    <div v-if="loading">Loading</div>
+    <div v-else>
       <p><strong>User Name:</strong> {{ user.name }}</p>
       <p><strong>User Email:</strong> {{ user.email }}</p>
-    </div>
-    <div v-else>
-      <p>Not logged</p>
     </div>
   </div>
 </template>

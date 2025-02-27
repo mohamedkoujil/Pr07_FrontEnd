@@ -1,32 +1,15 @@
 <script setup lang="ts">
-import axios from "axios";
-import { useRouter } from "vue-router";
-
-const router = useRouter();
-
 definePageMeta({
   layout: "centered",
+  middleware: ["guest"],
 });
-
-interface LoginPayload {
-  email: string;
-  password: string;
-}
 
 const form = ref({
   email: "",
   password: "",
 });
 
-const login = async (payload: LoginPayload) => {
-  try {
-    const res = await axios.post("/api/login", payload);
-    console.log(res);
-    router.push("/me");
-  } catch (error) {
-    console.error(error);
-  }
-};
+const { login } = useAuth();
 </script>
 <template>
   <div class="login">

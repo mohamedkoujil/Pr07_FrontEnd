@@ -1,4 +1,4 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+// https://nuxt.com/docs/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: ["@vueuse/nuxt", "@nuxtjs/tailwindcss", "@formkit/nuxt"],
   css: ["@/assets/main.css"],

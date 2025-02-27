@@ -6,6 +6,7 @@ const router = useRouter();
 
 definePageMeta({
   layout: "centered",
+  middleware: ["guest"],
 });
 
 interface RegisterPayload {
@@ -22,15 +23,7 @@ const form = ref({
   password_confirmation: "",
 });
 
-async function register(payload: RegisterPayload) {
-  try {
-    const res = await axios.post("/api/register", payload);
-    console.log(res);
-    router.push("/me");
-  } catch (error) {
-    console.error(error);
-  }
-}
+const { register } = useAuth();
 </script>
 <template>
   <div class="register">

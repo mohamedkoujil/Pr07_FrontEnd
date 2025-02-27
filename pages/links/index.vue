@@ -1,4 +1,10 @@
 <script setup lang="ts">
+import axios from "axios";
+
+definePageMeta({
+  middleware: ["auth"],
+});
+
 const links = [
   {
     short_link: "234jlsfsf",
